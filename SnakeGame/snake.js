@@ -10,7 +10,7 @@ function init(){
     
     pen = canvas.getContext('2d');
 
-    cellSize = 66;
+    cellSize = 67;
     
     
     snake = {
@@ -42,15 +42,60 @@ function init(){
        },
 
        updateSnake  : function(){
-           var newX = this.cells[0].x + 1;
-           var newY = this.cells[0].y;
 
-           this.cells.pop();
-           this.cells.unshift({x:newX,y:newY});
-       }
+        var HeadX = this.cells[0].x;
+        var HeadY = this.cells[0].y;
+
+        var newX ,newY;
+
+        this.cells.pop();
+
+
+        if(this.direction == "right"){
+            newX = HeadX +1;
+            newY = HeadY;
+
+        }else if(this.direction == "left"){
+            newX = HeadX -1;
+            newY = HeadY;
+        }else if(this.direction== "down"){
+            newX = HeadX;
+            newY = HeadY + 1;
+        }
+        else{
+            newX = HeadX;
+            newY = HeadY -1;
+        }
+
+        this.cells.unshift({x:newX,y:newY});
+       
+      }
     }
     //pen.fillRect(0,0,50,50);
     snake.createSnake();
+
+    // Adding key listener 
+
+    document.addEventListener("keydown",keyPressed);
+
+    function keyPressed(o){
+        
+        if(o.key == "ArrowRight"){
+            snake.direction="right";
+
+        }else if(o.key == "ArrowDown"){
+            snake.direction = "down";
+
+        }
+        else if(o.key == "ArrowUp"){
+            snake.direction =="up";
+        }
+        else{
+            snake.direction =="left";
+        }
+
+
+    }
 }
 
 
@@ -74,5 +119,5 @@ function gameloop(){
 }
 init();
 draw();
-var l = setInterval(gameloop,100)
+var l = setInterval(gameloop,150);
 
