@@ -41,6 +41,7 @@ function init(){
 
        },
 
+       
        updateSnake  : function(){
 
         var HeadX = this.cells[0].x;
