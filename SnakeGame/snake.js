@@ -12,6 +12,8 @@ function init(){
 
     cellSize = 67;
     
+    score = 4;
+    
     food = generateFood();
 
     game_over =false;
@@ -20,11 +22,16 @@ function init(){
     food_img = new Image();
     food_img.src = "Assets/apple.png";
 
+    // get image of trophy
+
+    trophy_img = new Image();
+    trophy_img.src = "Assets/trophy.png";
+
     
     snake = {
 
        color : "red",
-       currentSize : 5,
+       currentSize : 4,
        cells:  [],
        direction: "right",
 
@@ -64,6 +71,8 @@ function init(){
         if( HeadX == food.x && HeadY == food.y){
 
             food = generateFood();
+
+            score++;
 
             // //Check if food is in the cell 
             // for(var i = 0 ; i < this.cells.length ;i++){
@@ -154,6 +163,11 @@ function draw(){
    // pen.fillRect(food.x * cellSize ,food.y * cellSize , cellSize-2 , cellSize-2 )
     pen.drawImage(food_img,food.x * cellSize ,food.y * cellSize , cellSize-2 , cellSize-2);
 
+
+    pen.drawImage(trophy_img,20,20,cellSize,cellSize); 
+    pen.fillStyle = "black";
+    pen.font = "20px Roboto";
+    pen.fillText(score,50,50);
 
 }
 
