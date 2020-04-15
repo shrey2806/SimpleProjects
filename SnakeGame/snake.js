@@ -5,8 +5,8 @@ function init(){
     
     canvas = document.getElementById("SnakeCanvas");
     
-    W = canvas.width = 730;
-    H = canvas.height = 730;
+    W = canvas.width = 800;
+    H = canvas.height = 800;
     
     pen = canvas.getContext('2d');
 
@@ -15,6 +15,11 @@ function init(){
     food = generateFood();
 
     game_over =false;
+
+    // get image for food;
+    food_img = new Image();
+    food_img.src = "Assets/apple.png";
+
     
     snake = {
 
@@ -146,8 +151,8 @@ function draw(){
     snake.drawSnake();
 
     pen.fillStyle = food.color;
-    pen.fillRect(food.x * cellSize ,food.y * cellSize , cellSize-2 , cellSize-2 )
-
+   // pen.fillRect(food.x * cellSize ,food.y * cellSize , cellSize-2 , cellSize-2 )
+    pen.drawImage(food_img,food.x * cellSize ,food.y * cellSize , cellSize-2 , cellSize-2);
 
 
 }
@@ -174,6 +179,7 @@ function gameloop(){
 
     if(game_over == true){
         clearInterval(f);
+       
         alert("Game Over");
     }
     draw();
