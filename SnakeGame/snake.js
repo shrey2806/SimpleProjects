@@ -23,43 +23,50 @@ function init(){
        createSnake : function(){
 
             // Creating Snake Starting from 2nd cell in the grid
+            // Pushed Content would be { (5,0) , (4,0), (3,0), (2,0) , (1,0))}
             for( var i = this.currentSize  ; i > 0 ;i--){
-                this.cells.push({x:i,y:0});
+                this.cells.push({ x:i,y:0 });
             }
             
        },
 
        drawSnake : function(){
-        console.log(this.cells);
-        for(var i = 0 ; i < this.cells.length ; i++){
-                pen.fillStyle = "Brown";        
-                pen.fillRect( this.cells[i].x*cellSize ,this.cells[i].y*cellSize,cellSize-3,cellSize-3);
-                
-                
-        }
+            //console.log(this.cells);
             
-
-       },
+            for(var i = 0 ; i < this.cells.length ; i++){
+                pen.fillStyle = "Brown";        
+            
+                pen.fillRect( this.cells[i].x*cellSize ,this.cells[i].y*cellSize,cellSize-3,cellSize-3);
+                // (5*67 , 0 , 64, 64);
+                
+            }
+            
+        },
 
        
        updateSnake  : function(){
+
 
         var HeadX = this.cells[0].x;
         var HeadY = this.cells[0].y;
 
         var newX ,newY;
 
+        
         this.cells.pop();
 
-
         if(this.direction == "right"){
+            
             newX = HeadX +1;
             newY = HeadY;
 
         }else if(this.direction == "left"){
+            console.log('Pressed left');
             newX = HeadX -1;
             newY = HeadY;
-        }else if(this.direction== "down"){
+
+        }else if(this.direction == "down"){
+            
             newX = HeadX;
             newY = HeadY + 1;
         }
@@ -87,14 +94,14 @@ function init(){
         }else if(o.key == "ArrowDown"){
             snake.direction = "down";
 
-        }
-        else if(o.key == "ArrowUp"){
-            snake.direction =="up";
+        }else if(o.key == "ArrowUp"){
+            snake.direction ="up";
         }
         else{
-            snake.direction =="left";
+            snake.direction ="left";
         }
 
+        console.log(snake.direction);
 
     }
 }
@@ -113,6 +120,8 @@ function draw(){
 
 }
 
+
+
 function gameloop(){
     draw();
     update();
@@ -120,5 +129,5 @@ function gameloop(){
 }
 init();
 draw();
-var l = setInterval(gameloop,150);
+var l = setInterval(gameloop,200);
 
