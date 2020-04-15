@@ -12,6 +12,7 @@ function init(){
 
     cellSize = 67;
     
+    food = generateFood();
     
     snake = {
 
@@ -46,15 +47,18 @@ function init(){
        
        updateSnake  : function(){
 
-
+        
         var HeadX = this.cells[0].x;
         var HeadY = this.cells[0].y;
-
-        var newX ,newY;
+        
+        //WHenever the coordintes of food and snake head meet we increase the length of snake
+        // and 
+        
 
         
         this.cells.pop();
 
+        var newX ,newY;
         if(this.direction == "right"){
             
             newX = HeadX +1;
@@ -117,9 +121,29 @@ function draw(){
     pen.clearRect(0,0,W,H);
     snake.drawSnake();
 
+    pen.fillStyle = food.color;
+    pen.fillRect(food.x * cellSize ,food.y * cellSize , cellSize-2 , cellSize-2 )
+
+
 
 }
 
+// Returns food at random Location :
+function generateFood(){
+
+    //Generating Food randomly excluding last row or column of widht cellSize.
+    // We divide by cellSize because Drawing will multiply it by cell Size;
+
+    var food_X = Math.round(Math.random()*(W-cellSize)/cellSize);
+    var food_Y = Math.round(Math.random()*(W-cellSize)/cellSize);
+    var food = {
+        x : food_X,
+        y : food_Y,
+        color : "red",
+    };
+
+    return food;
+}
 
 
 function gameloop(){
