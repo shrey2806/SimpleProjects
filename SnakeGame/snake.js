@@ -13,6 +13,8 @@ function init(){
     cellSize = 67;
     
     food = generateFood();
+
+    game_over =false;
     
     snake = {
 
@@ -51,13 +53,25 @@ function init(){
         var HeadX = this.cells[0].x;
         var HeadY = this.cells[0].y;
         
-        //WHenever the coordintes of food and snake head meet we increase the length of snake
+        // Whenever the coordintes of food and snake head meet we increase the length of snake
         // and 
-        
 
-        
-        this.cells.pop();
+        if( HeadX == food.x && HeadY == food.y){
 
+            food = generateFood();
+
+            // //Check if food is in the cell 
+            // for(var i = 0 ; i < this.cells.length ;i++){
+            //     if( cells[i].x == food.x){
+            //         food = generateFood();
+            //     }
+            // }
+
+
+        }else{
+        
+            this.cells.pop();
+        }
         var newX ,newY;
         if(this.direction == "right"){
             
@@ -80,6 +94,16 @@ function init(){
         }
 
         this.cells.unshift({x:newX,y:newY});
+
+
+        // Check logic of snake going out : 
+        var last_x = Math.round(W/cellSize);
+        var last_y = Math.round(W/cellSize);
+
+        if(this.cells[0].x < 0  || this.cells[0].y <0 || this.cells[0].x  >= last_x || this.cells[0].y >=last_y){
+            game_over = true;
+        } 
+
        
       }
     }
@@ -147,6 +171,11 @@ function generateFood(){
 
 
 function gameloop(){
+
+    if(game_over == true){
+        clearInterval(f);
+        alert("Game Over");
+    }
     draw();
     update();
 
