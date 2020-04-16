@@ -1,0 +1,41 @@
+
+#mainContainer{
+
+    width:  540px;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    justify-content: space-evenly;
+    align-content: space-evenly ; 
+}
+
+#mainContainer div{
+    width: 60px;
+    height: 60px;
+    background-color: whitesmoke;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.lb{
+    border-left: 2px solid black;
+}
+.tb{
+    border-top : 2px solid black;
+
+}
+.tdb{
+    border-top: 0.6px dashed black;
+}
+.ldb{
+    border-left: 0.6px dashed black;
+}
+.rb{
+    border-right : 2px solid black;
+}
+
+.bb{
+    border-bottom: 2px solid black;
+}
