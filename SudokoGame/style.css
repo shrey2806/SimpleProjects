@@ -29,11 +29,7 @@
 
 }
 
-#buttonContainer{
-   
-   
-    
-}
+
 
 button{
 
@@ -86,10 +82,11 @@ button{
 
 
 #instruction{
-    padding: 10px;
+    padding: 20px;
+    height: 160px;
     margin: 20px auto;
     background-color: whitesmoke;
     font-family: monospace;
-    
+    border-radius:10%;
 
 }
