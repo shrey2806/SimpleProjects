@@ -1,9 +1,8 @@
 
 #mainContainer{
-
+    margin-top: 20px;
     width:  540px;
     height: auto;
-    margin: auto;
     display: flex;
     flex-wrap: wrap;
     background-color: white;
@@ -11,7 +10,41 @@
     align-content: space-evenly ; 
 }
 
+#main-div{
+    display:                                                                                                                                                                                                                                                    flex;
+    justify-content: space-between;
+    
+    
+} 
+
+#ButtonDiv{
+        
+        
+        height: 300px;
+        width: 300px;
+        margin: 30px 30px;        
+        display: flex;
+        align-items: center;
+
+
+}
+
+#buttonContainer{
+   
+   
+    
+}
+
+button{
+
+    margin-top:10px;
+    width: 150px;
+    
+    
+    
+}
 #mainContainer div{
+    
     width: 60px;
     height: 60px;
     background-color: whitesmoke;
@@ -25,6 +58,11 @@
     color: green;
 }
 
+
+
+#mainContainer div:hover{
+    background-color: lightseagreen;
+}
 .lb{
     border-left: 2px solid black;
 }
@@ -44,4 +82,14 @@
 
 .bb{
     border-bottom: 2px solid black;
+}
+
+
+#instruction{
+    padding: 10px;
+    margin: 20px auto;
+    background-color: whitesmoke;
+    font-family: monospace;
+    
+
 }

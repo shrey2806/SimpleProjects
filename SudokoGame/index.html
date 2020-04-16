@@ -5,10 +5,33 @@
         Brainy Sudoko Game!
     </title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="style.css"> 
     </head>
 
     <body>
+        <nav class="navbar navbar-light " style="font-size: 25px; font-family: sans-serif; background-color: whitesmoke;">SUDOKO GAME </nav>
+        <div id = "main-div">
+            <div id="ButtonDiv">
+                <div id="buttonContainer">
+                <button id="Get Puzzle" type="button" class="btn">
+                    Get Puzzle
+                </button>
+                
+                <button id="CheckResult" type="button" class="btn btn-success"> 
+                    Check Result
+                </button>
+
+                <button id="Submit" type="button" class="btn btn-danger">
+                    Submit
+
+                </button>
+                </div>
+            </div>
+
+
         <div id ="mainContainer">
            
             <div id ="0" class = "lb tb "></div>
@@ -132,19 +155,20 @@
             <div id ="79" class = "ldb tdb bb"></div>
             <div id ="80" class = "ldb tdb rb bb"></div>
                 
+        </div>
 
-
-           
-
-           
-
-           
+            <div id="instruction">
+                <h3>Guidelines:</h3>
+                <ul>
+                    <li>Tap Get Puzzle to get new Puzzle.</li>
+                    <li>Tap Solve Game to automatically Solve Game</li>
+                    <li>Tap Submit to check your solution</li>
+                </ul>
+                
+            </div>
 
 
         </div>
-
-
-
 
     </body>
 
