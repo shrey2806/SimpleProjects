@@ -12,8 +12,6 @@ for(var i=0;i<9;i++){
     }
 }
 
-
-
 function resetColor(){
     for(let i=0;i<9;i++){
         for(let j=0;j<9;j++){
@@ -112,6 +110,23 @@ button_submit.onclick = function (){
     }
 
     //TODO :
+    var brek = false;
+    for(var i = 0;i<9;i++){
+        for(var j=0;j<9;j++){
+            if(arr[i][j].innerText != board[i][j]){
+                alert("Hard Luck!!! Try Again!");
+                brek = true;
+                break;
+            }
+        }
+        if(brek == true){
+            break;
+        }
+
+    }
+    if(brek == false){
+      alert("Congrats! you Successfully solved the board");
+    }
 
 }
 function isSafe(board,number,sr,sc){
@@ -185,3 +200,12 @@ function solveSudoko(board){
 
 }
 
+//Show the sudoko :
+button_check.onclick = function(){
+     for( var i =0;i<9;i++){
+         for(var j =0;j<9;j++){
+             arr[i][j].innerText = board[i][j];
+         }
+     }
+
+}
