@@ -14,7 +14,13 @@ for(var i=0;i<9;i++){
 
 
 
-
+function resetColor(){
+    for(let i=0;i<9;i++){
+        for(let j=0;j<9;j++){
+            arr[i][j].style.color = "green";
+        }
+    }
+}
 
 
 button_generate.onclick = function(){
@@ -27,6 +33,7 @@ button_generate.onclick = function(){
         
         //Populate board;
         board = response.board;
+        resetColor();
         fillInitialBoard(board);
         setColor();
         populateBoard(board);
