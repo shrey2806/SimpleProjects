@@ -1,0 +1,135 @@
+
+html,body{
+    height: 100%;
+}
+
+
+#bigContainer{
+    
+    display: flex;
+    flex-direction: column;
+    height:100%
+    
+}
+
+#container1{
+    
+    border:1px dotted black;
+    display: flex;
+    width: 100%;
+    height:30%;
+    
+     
+}
+
+#problemContainer{
+    
+    font-size: small;
+    width: 50%;
+    height: 100%;
+    border: 0.5px dotted black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding :10px;
+
+}
+input{
+    width: 40px;    
+}
+
+
+.fci{
+    width: 90px;
+    margin : 5px 20px; 
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#pc-generate-btn{
+    display: flex;
+    justify-content: center;
+    padding:5px;
+    
+}
+#pc-generate-btn button{
+    padding: 10px;
+}
+
+#pc-simplify-btn{
+    
+    display: flex;
+    justify-content: center;
+    padding:5px;
+}
+#pc-simplify-btn button{
+    padding:9px;
+    width: 140px;
+}
+
+.form-div{
+
+    padding:5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.myform{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+/* #transactionStatement{
+    
+    
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: center;    
+
+}
+
+#statements{
+    width: 450px;
+    background-color: lightgray;
+    margin :10px; 
+} */
+
+
+/* Solution Container Start ---------------- */
+#solutionContainer{
+    width: 50% ;
+    height: 100%;
+    
+    
+}
+/*---------------------------------------------_CONTAINER 1 ENDS--------------------------------*/
+
+
+#container2{
+
+    /* border:1px dashed black; */
+    display: flex;
+    width: 100%;
+    height: 70%; 
+}
+
+
+
+
+#problemGraph{
+
+    width: 50%;
+    height: 100%;
+    /* border: 1px solid black; */
+
+}
+
+#solutionGraph{
+
+    width: 50%;
+    height: 100%;
+    border: 0.5px dotted black;
+
+
+}

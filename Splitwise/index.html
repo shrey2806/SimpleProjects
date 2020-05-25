@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+        <title>Travel Planner</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+         
+        <script src="https://kit.fontawesome.com/3c0be365cb.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script type = "text/javascript" src ="logic.js"></script>
+        
+
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-light" style="font-size: 22px; font-family: sans-serif; background-color: whitesmoke; align-items: center;">
+            Simple Splitwise
+        </nav>
+
+        
+        <div id = "bigContainer">
+
+
+        <div id = "container1">
+            
+            <div id = "problemContainer">
+
+
+                <div class ="form-div">
+                    <form class="form-inline mt-2 ml-2 myform" name="myform">
+                    
+                        <label for="person1"><b>From: </b></label>
+                        <input type = "text" class="fci" id="person1" placeholder="adam"> 
+                        <label for= "person2"><b>To:  </b></label>
+                        <input type="text" class = "fci" id = "person2" placeholder="eve">
+                        <label for="amount"><b>Amount</b></label>
+                        <input type="number" class= "fci" id = "amount" placeholder="100">
+                    
+                        <button type ="button" class="btn" id= "addButton">Add</button>
+
+                    </form>
+                </div>
+                <!-- <div id ="transactionStatement">
+                    <div id ="statements">
+
+                    </div>
+
+                </div> -->
+                <div id = "pc-generate-btn">
+                    <button class="btn btn-success" id = "problemGraphButton">Generate Graph</button>
+                </div>
+                <div id = "pc-simplify-btn">
+                     <button class="btn btn-danger" id="SimplifyButton">Simplify Debts</button>
+                </div>
+           
+            </div>
+            
+            <div id = "solutionContainer">Solution Container 1</div>
+            
+        </div>
+
+        <div id = "container2">
+
+            <div id = "problemGraph">kfnkwenfw</div>
+        
+            <div id = "solutionGraph">wefwefwfwf</div>
+            
+        </div>
+        
+        
+        </div>            
+        
+
+
+
+
+
+        <!-- <div>
+            <br>
+            <button type="button" class="btn btn-danger" id="generate-graph">Get New Problem</button>
+        </div> -->
+
+
+    </body>
+</html>
