@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Whatsapp Chatlist</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <script src="https://kit.fontawesome.com/3c0be365cb.js" crossorigin="anonymous"></script>
+    <script src='script.js'></script>
+
+
+
+</head>
+<body>
+
+         
+    <nav class="navbar navbar-light" style="font-size: 22px; font-family: sans-serif; background-color: whitesmoke; align-items: center;">
+       Whatsapp Chatlist
+    </nav>
+
+    <div id = "bigContainer" >
+
+        <div id = "container1" >
+            
+            <div class = "chatScreen">
+                
+                <div class ="chatHeader">
+
+                    <span class ="col-4" style="text-align: center">
+                        <i class="fas fa-comments" style ="color: rgb(11, 165, 88)"></i>
+                    </span>
+                    <span class = "col-4" style="text-align: center">
+                        <i class="fas fa-video" style ="color: rgb(11, 165, 88)"></i>
+                    </span>
+
+                    <span class ="col-4" style="text-align: center">
+                        <i class="fas fa-stream" style ="color: rgb(11, 165, 88)"></i>
+                    </span>
+                </div>
+
+                <div class = "chatBody" data-auto-height="" >
+
+                    <!-- <div class="jspPane" style="padding: 0px; top: 0px; width: 339px;"> -->
+                        <ul class="items" id="chatList">
+
+                        </ul>
+                    </div>
+
+                
+                </div>
+
+
+            </div>
+
+            <div id = "container2">
+            <div class = "notificationDisplay">
+
+            </div>
+
+        </div>
+
+        </div>
+
+        
+
+        <div id = "buttonDiv">
+            <button type="button" class="btn btn-danger" id="generate-step" style="margin:auto; padding:10px">Generate new step</button>
+        </div>
+
+    
+
+    <template>
+        <li class="item" id="ChatListItem">
+            <a href="#">
+            <span class="avatar">
+                <img src="./images/avatar1.png" width="36" height="36" id="Image"></img>
+            </span>
+                <div class="body">
+                    <div class="name">
+                        <span id="Name">Eric George</span>
+                        <span id="Time" class="datetime">just now</span>
+                    </div>
+                    <div class="message" id="Message">Why didn't he come and talk to me himse...</div>
+                </div>
+            </a>
+        </li>
+    </template> 
+
+
+</body>
+</html>
