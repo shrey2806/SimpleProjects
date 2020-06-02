@@ -47,7 +47,7 @@ onload = function(){
         const places = ['ChaiDukan','Juice','Dhaaba','ThandiBeer','DosaShop','LassiPalace','ChickenRoll','ShopRixMall','PulseGym','School','Hospital','LootBank'];
 
         const V = Math.floor(Math.random()* places.length);
-        if(V==0){
+        if(V < 3){
             V = 3;
         }
 
@@ -55,13 +55,18 @@ onload = function(){
         let edges = [];
         
         // Initialising Vertices:
-        for(let i = 0 ; i < V ;i++){
-            vertices.push({id:i, label:places[i]});
+        for(let i = 0 ; i < V ; i++ ) {
+            vertices.push(
+                {
+                 id:i,
+                 label:places[i]
+                }
+            );
         }
 
         // Initializing Edges: 
 
-        for(let i = 1; i <V;i++){
+        for(let i = 1; i < V ; i++){
             let neigh = Math.floor(Math.random()*i);
             edges.push({from: i, to: neigh, color: 'orange',label: String(Math.floor(Math.random()*70)+20)});
 
