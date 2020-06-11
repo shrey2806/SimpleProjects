@@ -68,3 +68,49 @@ html,body{
     align-content: center;
 
 }
+
+
+.avatar>img {
+    width: 36px;
+    height: 36px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%
+}
+
+#ChatListItem{
+    width:330px;
+    height: 60px;
+    display: flex;
+
+}
+#image-div{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.body-div{
+    
+    width: 60%;
+    height: 100%;
+}
+.name{
+    font-weight: bold;
+    margin-left:0px;
+    margin-top:12px;
+    font-size: 15px;
+}
+.message{
+    font-size:10px;
+    color:gray;
+}
+#time-div{
+    width:20%;
+    height: 100%;
+}
+.datetime{
+    font-size: 11px;
+    color:gray;
+    margin-top:15px;
+}
