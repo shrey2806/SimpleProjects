@@ -14,6 +14,10 @@ onload = function(){
 
 }
 
+const chat_names = ["Tanmay Bhatt", "Kumar Varun","Urooj Asfaq","Biswa K Rath","Jaya Sethi","Rahul Subramanium","Akash Gupta"];
+const chat_msg = ["Aby aaj ka kya scene hai","Mera Standup Dekha kYa?","Here's free tickets to my show",
+"Mera prime-video kesa laga","Chal na milte hai?"];
+
 
 class ChatResolver{
 
@@ -55,14 +59,61 @@ class ChatResolver{
 
         this.updateView();
     }
+    extractFromList(id){
+        
+        let node = this.hashMap[id];
+        
+        let prevNode = node['prev'];
+        let nextNode = node['next'];
+        
+        node['prev'] = null;
+        node['next'] = null;
 
-    createNode(id){
+        if(prevNode!==null){
+            prevNode['next'] = nextNode;
+        }
+        if(nextNode!==null){
+            nextNode['prev'] = prevNode;
+        }   
 
+        if(node === this.linked_list){
+            this.linked_list = nextNode;
+        }
 
-
+        return node;
 
     }
 
+    createNode(id){
+        // Tasks create 
+        let node={};
+        node['next']= null;
+        node['prev'] = null;
+        let chat_item = this.chat_template.cloneNode(true);
+        chat_item.querySelector('#Name').innerText = chat_names[id%chat_names.length];
+        chat_item.querySelector('#Message').innerText = chat_msg[id%chat_msg.length];
+        chat_item.querySelector('#Image').src = "./images/avatar" + eval(1 + id%chat_names.length) + ".png";
+        node['chat_item'] = chat_item;
+        return node;
+    }
 
+    deleteMessage(id){
+        let node = this.extractFromList(id);
+        delete this.hashMap[id];
+        this.updateView();
+
+    }
+
+    updateView(){
+        let innerhtml = '';
+        let head = this.linked_list;
+        while(head!==null){
+            innerhtml += head['chat_item'].outerHTML;
+            head = head['next'];
+
+        }
+
+        this.chatList.innerHTML = innerhtml;
+    }
 
 }
