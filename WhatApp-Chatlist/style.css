@@ -64,11 +64,13 @@ html,body{
 .items li{
     border-bottom:0.25px solid lightgray;
 }
-.notificationDisplay{
+#notificationDisplay{
 
-    width: 300px;
-    height: 200px;
-    
+    width: 80%;
+    height: 80%;
+    margin: 20px auto;
+    overflow-y: scroll;
+    text-align:center;    
 }
 
 #buttonDiv{

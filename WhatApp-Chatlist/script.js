@@ -30,8 +30,8 @@ onload = function(){
                 chats.push(index);
             }
             chatHandler.addMessage(index);
-
-            notifications.innerHTML = "New Message from" + chat_names[index] + "<br>" + notifications.innerHTML;
+            console.log(notifications.innerHTML);
+            notifications.innerHTML = "New Message from " + chat_names[index] + "<br>" + notifications.innerHTML;
 
 
         }
