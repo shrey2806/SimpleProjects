@@ -1,22 +1,49 @@
 
-//import { ChatResolver, chat_names } from './ChatResolver.js';
 
+const chat_names = ["Tanmay Bhatt", "Kumar Varun","Urooj Asfaq","Biswa K Rath","Jaya Sethi","Rahul Subramanium","Akash Gupta"];
+const chat_msg = ["Aby aaj ka kya scene hai","Mera Standup Dekha kYa?","Here's free tickets to my show",
+"Mera prime-video kesa laga","Chal na milte hai?"];
 onload = function(){
 
     const chatList = this.document.getElementById('chatList');
     const generate = this.document.getElementById('generate-step');
     const template = this.document.getElementsByTagName('template')[0];
     const notifications = this.document.getElementById('notificationDisplay');
-
     const chatItem = template.content.querySelector('li');
     
+    const chatHandler = new ChatResolver(chatItem,chatList);
+
+    let chats = [];
+
+    generate.onclick = function(){
+        if(chats.length > 0 && Math.random() > 0.75){
+            let index = Math.floor(Math.random()*chats.length);
+            let idToDelete = chats[index];
+            chatHandler.deleteMessage(idToDelete);
+            notifications.innerHTML = "Deleted Message from "+ chat_names[idToDelete] + "<br>" + notifications.innerHTML;
+            chats.slice(index,1);
+        }else{
+            let index = Math.floor(Math.random()*7);
+            console.log('index is ', index);
+            if(chats.includes(index) === false){
+                console.log("inside includes");
+                chats.push(index);
+            }
+            chatHandler.addMessage(index);
+
+            notifications.innerHTML = "New Message from" + chat_names[index] + "<br>" + notifications.innerHTML;
+
+
+        }
+
+
+    }
     
 
 }
 
-const chat_names = ["Tanmay Bhatt", "Kumar Varun","Urooj Asfaq","Biswa K Rath","Jaya Sethi","Rahul Subramanium","Akash Gupta"];
-const chat_msg = ["Aby aaj ka kya scene hai","Mera Standup Dekha kYa?","Here's free tickets to my show",
-"Mera prime-video kesa laga","Chal na milte hai?"];
+
+
 
 
 class ChatResolver{
@@ -32,15 +59,19 @@ class ChatResolver{
 
     addMessage(id){
         // If person is not present in the list;
-        
-        if((id in this.hashMap)===null){
-
-            let node = this.createNode(id);
+        let node = null;
+        console.log(this.hashMap);
+        console.log(this.hashMap.has(id));
+        // if((id in this.hashMap) === null){
+        if(this.hashMap.has(id)===false){
+            console.log('inside');
+            node = this.createNode(id);
             this.hashMap[id] = node;
 
         }else{
+            console.log("present");
             //extract from the linked list;
-            let node = this.extractFromList(id);
+             node = this.extractFromList(id);
 
         }
 
@@ -62,7 +93,7 @@ class ChatResolver{
     extractFromList(id){
         
         let node = this.hashMap[id];
-        
+        console.log(node);
         let prevNode = node['prev'];
         let nextNode = node['next'];
         
