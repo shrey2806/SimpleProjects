@@ -1,8 +1,8 @@
 
 
 const chat_names = ["Tanmay Bhatt", "Kumar Varun","Urooj Asfaq","Biswa K Rath","Jaya Sethi","Rahul Subramanium","Akash Gupta"];
-const chat_msg = ["Aby aaj ka kya scene hai","Mera Standup Dekha kYa?","Here's free tickets to my show",
-"Mera prime-video kesa laga","Chal na milte hai?"];
+const chat_msg = ["Chai-Sutta?","Aby aaj ka kya scene hai","Mera Standup Dekha kYa?","Here's free tickets to my show",
+"Mera prime-video kesa laga","Chal Podcast Banate Hai...","Hi","Chal na milte hai?"];
 onload = function(){
 
     const chatList = this.document.getElementById('chatList');
@@ -24,13 +24,15 @@ onload = function(){
             chats.slice(index,1);
         }else{
             let index = Math.floor(Math.random()*7);
-            console.log('index is ', index);
+            
+            
+            
             if(chats.includes(index) === false){
-                console.log("inside includes");
+              
                 chats.push(index);
             }
             chatHandler.addMessage(index);
-            console.log(notifications.innerHTML);
+            
             notifications.innerHTML = "New Message from " + chat_names[index] + "<br>" + notifications.innerHTML;
 
 
@@ -60,16 +62,19 @@ class ChatResolver{
     addMessage(id){
         // If person is not present in the list;
         let node = null;
-        console.log(this.hashMap);
-        console.log(this.hashMap.has(id));
-        // if((id in this.hashMap) === null){
-        if(this.hashMap.has(id)===false){
-            console.log('inside');
+        
+        
+        
+        if( this.hashMap.has(id) === false ){
+
+            console.log('id dont exist in hashmap');
             node = this.createNode(id);
-            this.hashMap[id] = node;
+            this.hashMap.set(id,node);
+            
+            
 
         }else{
-            console.log("present");
+            console.log("present in hashmap");
             //extract from the linked list;
              node = this.extractFromList(id);
 
@@ -92,7 +97,7 @@ class ChatResolver{
     }
     extractFromList(id){
         
-        let node = this.hashMap[id];
+        let node = this.hashMap.get(id);
         console.log(node);
         let prevNode = node['prev'];
         let nextNode = node['next'];
