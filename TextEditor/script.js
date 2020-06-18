@@ -2,7 +2,6 @@
 class Stack{
 
     constructor(){
-
         this.stack = [];
         this.size = 0;
         this.bufferSize = 3;
@@ -10,15 +9,15 @@ class Stack{
     }
 
     isEmpty(){
+        
         return (this.size===0);
+    
     }
 
     top(){
 
         if( this.isEmpty() === false ) {
-            
-            return this.stack[this.size-1];
-            
+           return this.stack[this.size-1];
         }
 
     }
@@ -45,7 +44,7 @@ class Stack{
 
                 let ele = this.pop();
                 let newval = val + ele[2];
-                this.stack.push([type,index,val])
+                this.stack.push([type,index,newval])
 
             }
         }
@@ -78,13 +77,13 @@ document.onkeydown = function(event){
     if(event.ctrlKey || event.metaKey){
         event.preventDefault();
     }
-}
+};
 
 onload = function(){
     const textArea = this.document.getElementById('textArea');
     const opDisplay = this.document.getElementById('operationDisplay');
     const undo = this.document.getElementById('undoButton');
-
+    
     text = "";
     var stack = new Stack();
 
@@ -93,11 +92,11 @@ onload = function(){
         switch(event.inputType){
             case "insertText":
                 let index = textArea.selectionStart;     
-             //   console.log();   
+            //  console.log();   
                 text = text + event.data;
                 stack.push(0,index-1,event.data);
-             //   console.log(text);
-               // console.log(textArea.selectionStart);
+            //  console.log(text);
+            //  console.log(textArea.selectionStart);
                 break;
 
             case "deleteContentBackward":
@@ -113,14 +112,48 @@ onload = function(){
 
         }
 
+        opDisplay.innerHTML = stack.top() + "<br>" + opDisplay.innerHTML;
 
-    }
+    };
 
     undo.onclick = function(){
-        // Perform Undo Operation : 
+        
+        // steps of UNDO ???? 
+        let ele = stack.pop();
+
+        if(ele[0]!==-1){
+
+            opDisplay.innerHTML = "Performing undo Operation<br>" + opDisplay.innerHTML;
+            
+            var index = ele[1];
+            
+            if(ele[0]===0){
+        
+                var len = ele[2].length;
+               
+                // if(index+len-1 === text.length  -1)
+                //     text = text.substring(0,index);
+                
+                // else{
+                //    }
+                
+                //text = text.substring(0,index) + text.substring(index+len-1);
+                text = text.substring(0,index - len +1) +  text.substring(index+1);
+                textArea.value = text;
+            
+            }else{
+
+                text = text.substring(0,index) + ele[2] + text.substring(index);  
+                textArea.value = text;
+            } 
+        
+        
+        }
 
 
-    }
+
+
+    };
 }
 
 

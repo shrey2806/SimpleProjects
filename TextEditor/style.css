@@ -3,7 +3,8 @@
     display:block;
     font-family: monospace;
     background-color: black; 
-    text-align: center; color: white;
+    text-align: center; 
+    color: white;
     font-weight: bold;
     padding:10px;
 }
@@ -48,7 +49,9 @@ body{
     height: 85%;
     padding:10px;
     text-align: center;
+    overflow-y: scroll;
     border: 0.5px dotted gray;
+    color:red;
 }
 .buttonDiv{
     display: flex;
