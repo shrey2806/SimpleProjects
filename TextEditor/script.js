@@ -70,6 +70,10 @@ class Stack{
         
 
     }
+    clear(){
+        this.stack = [];
+        this.size = 0;
+    }
 
 }
 
@@ -81,9 +85,13 @@ document.onkeydown = function(event){
 };
 
 onload = function(){
+
     const textArea = this.document.getElementById('textArea');
     const opDisplay = this.document.getElementById('operationDisplay');
     const undo = this.document.getElementById('undoButton');
+    const clear = this.document.getElementById('clearButton');
+
+
     
     text = "";
     var stack = new Stack();
@@ -93,16 +101,12 @@ onload = function(){
         switch(event.inputType){
             case "insertText":
                 let index = textArea.selectionStart;     
-            //  console.log();   
-                
                 stack.push(0,index-1,event.data);
                 text = textArea.value;
-            //  console.log(text);
-            //  console.log(textArea.selectionStart);
                 break;
 
             case "deleteContentBackward":
-                //console.log(textArea.selectionStart);
+                
                 let val =  text.substring(textArea.selectionStart,textArea.selectionStart+1);
                 text = text.substring(0,textArea.selectionStart) + text.substring(textArea.selectionStart+1);
                 
@@ -150,6 +154,13 @@ onload = function(){
 
 
     };
+
+    clear.onclick = function(){
+        text = "";
+        textArea.value = "";
+        stack.clear();
+        opDisplay.innerHTML = "";
+    }
 }
 
 

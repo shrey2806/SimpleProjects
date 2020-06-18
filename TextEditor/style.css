@@ -29,9 +29,11 @@ body{
 
 #c1{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 #textArea{
     margin : 10px 20px;
     width : 80%;height: 85%;
@@ -42,9 +44,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 #operationDisplay{
-    
+    margin-top:10px;
     width: 80%;
     height: 85%;
     padding:10px;
@@ -57,7 +60,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 #undoButton{
     margin-top:20px;
+}
+#clearButton{
+    margin-top: 10px;
 }
