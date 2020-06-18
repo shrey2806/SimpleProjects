@@ -27,7 +27,7 @@ class Stack{
 
             if( type===0 ){
                 this.stack.push([type,index,val]);
-              //  console.log(this.stack);
+              
               
             }
 
@@ -36,7 +36,8 @@ class Stack{
 
             
             
-            if(this.top()[0]!== type || this.top()[2].length >= this.bufferSize){
+            if(this.top()[0]!== type || this.top()[2].length >= this.bufferSize ||
+                this.top()[1] > index){
             
                 this.stack.push([type,index,val]);
             
@@ -93,8 +94,9 @@ onload = function(){
             case "insertText":
                 let index = textArea.selectionStart;     
             //  console.log();   
-                text = text + event.data;
+                
                 stack.push(0,index-1,event.data);
+                text = textArea.value;
             //  console.log(text);
             //  console.log(textArea.selectionStart);
                 break;
@@ -103,8 +105,6 @@ onload = function(){
                 //console.log(textArea.selectionStart);
                 let val =  text.substring(textArea.selectionStart,textArea.selectionStart+1);
                 text = text.substring(0,textArea.selectionStart) + text.substring(textArea.selectionStart+1);
-             //   console.log(text);
-               // console.log(val);
                 
                 stack.push(1,textArea.selectionStart,val);
                 break;
@@ -118,26 +118,22 @@ onload = function(){
 
     undo.onclick = function(){
         
-        // steps of UNDO ???? 
+        
         let ele = stack.pop();
 
         if(ele[0]!==-1){
-
-            opDisplay.innerHTML = "Performing undo Operation<br>" + opDisplay.innerHTML;
+            let operationName = "Insert";
+            if(ele[0]===0){
+                operationName = "Delete";
+            }
+            
+            opDisplay.innerHTML = "Performing undo Operation: "+ operationName+ " <br>" + opDisplay.innerHTML;
             
             var index = ele[1];
             
             if(ele[0]===0){
         
                 var len = ele[2].length;
-               
-                // if(index+len-1 === text.length  -1)
-                //     text = text.substring(0,index);
-                
-                // else{
-                //    }
-                
-                //text = text.substring(0,index) + text.substring(index+len-1);
                 text = text.substring(0,index - len +1) +  text.substring(index+1);
                 textArea.value = text;
             
