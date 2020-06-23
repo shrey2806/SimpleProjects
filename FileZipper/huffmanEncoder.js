@@ -13,7 +13,7 @@ class HuffmanEncoder{
         }
 
         this.getMapping(node[1][0], path+"0");
-        this.getMapping(node[1][1], path +"1");
+        this.getMapping(node[1][1], path+"1");
 
     }
 
@@ -88,9 +88,9 @@ class HuffmanEncoder{
 
         const result = {
             encodedText : encodedText,
-            padding : padding,
+            paddinglen : padding.length,
             huffmanTree : huffmanTree,
-            binaryString : binaryString,
+            
         };
 
         return result;
@@ -99,8 +99,49 @@ class HuffmanEncoder{
 
     decodeData(result){
 
+        let encodedText = result.encodedText;
+        let huffmanTree = result.huffmanTree;
+        let paddinglength = result.paddinglen;
+
+        let binaryString ="";
+
+        for(let i = 0; i< encodedText.length ; i++){
+
+            let num = encodedText.charCodeAt(i);
+
+            let bin="";
+
+            for(let j = 0 ; j < 8 ; j ++){
+
+                bin = num%2 + bin;
+                num = Math.floor(num/2);
+            }
+            binaryString = binaryString + bin;
+
+        }
+
+        binaryString = binaryString.substring(0,binaryString.length - paddinglength);
 
 
+        let decodedText = "";
+        let node = huffmanTree;
+        for(let i = 0; i < binaryString.length ; i++){
+
+            if(binaryString[i]=="0"){
+                node = node[1][0];
+                
+            }else{
+                node = node[1][1];
+            }
+
+            if(typeof(node[1])==="string"){
+                decodedText+=node[1];
+                node = huffmanTree; 
+            }
+            
+        }
+
+        return decodedText;
 
     }
 }

@@ -39,3 +39,28 @@
 
 
 }
+
+button{
+    margin:10px;
+}
+
+#c1, #c2{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#treeDisplay{
+    width:70%;
+    height:80%;
+    overflow-y: scroll;
+    border: 0.5px solid gray;
+
+}
+
+#compressionDisplay{
+    width:70%;
+    height:80%;
+    border: 0.5px solid gray;
+}
