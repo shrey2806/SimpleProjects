@@ -1,4 +1,4 @@
-export {Heap}
+export { Heap }
 
 class Heap{
 
@@ -87,4 +87,4 @@ class Heap{
     }
 
 
-}
+};

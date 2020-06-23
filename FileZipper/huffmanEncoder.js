@@ -1,4 +1,7 @@
-import { Heap } from "./BinaryHeap";
+import { Heap } from './BinaryHeap.js';
+
+export { HuffmanEncoder }
+
 
 class HuffmanEncoder{
     
@@ -8,28 +11,43 @@ class HuffmanEncoder{
 
     getMapping(node,path){
 
+        console.log("node is," , node);
+
         if(typeof(node[1]) ===  "string"){
             this.mappings[node[1]] = path;
+            return;
         }
 
-        this.getMapping(node[1][0], path+"0");
+        this.getMapping(node[1][0], path+"0");  
         this.getMapping(node[1][1], path+"1");
 
     }
 
-    displayTree(){
+    displayTree(node, index = 1){
+        
+        
+        if(typeof(node[1])==="string"){
+
+            return String(index) + " = " + node[1];
+        }    
+        let left = this.displayTree(node[1][0], index*2);
+        let right = this.displayTree(node[1][1],  index*2+1);
+        let res = String(index*2)+" <= "+index+" => "+String(index*2+1);
+        return res + '\n' + left + '\n' + right;
+        
+    
 
         
     }
     encodeData(data){
 
-        const m = new Map();
-        const heap = new Heap();
+        let  m = new Map();
+        this.heap = new Heap();
         
         // Setting the frequency of the characters in the text;
-        for(let i= 0 ; i < data.length(); i++ ){
-            if(m.has[data[i]]){
-                m[data[i]] = m[data[i]] + 1;
+        for(let i= 0 ; i < data.length; i++ ){
+            if(m.has(data[i])){
+                m[data[i]] = m[data[i]] +1;
             }
             else{
                 m.set(data[i],1);
@@ -37,25 +55,29 @@ class HuffmanEncoder{
 
         }
 
-
+        console.log(m);
         // Add them to a Heap;
-        for(const i in m){
-            heap.insert([-m[i],i]);
+        for(var i in m){
+            
+            this.heap.insert([-m[i],i]);
         }
 
         // Now create a HuffMan tree out of it;
-        while(heap.size > 1){
+        while(this.heap.size() > 1){
             
-            let node1 = heap.extractMax();
-            let node2 = heap.extractMax();
+            let node1 = this.heap.extractMax();
+            let node2 = this.heap.extractMax();
 
-            let node = [node1[0]+ node2[0], [node1,node2]];
-            heap.insert(node);
+            let node = [node1[0]+ node2[0], [node1,node2] ];
+            this.heap.insert(node);
 
         }
 
         
-        const huffmanTree =  heap.extractMax(); 
+        const huffmanTree =  this.heap.extractMax(); 
+        
+        console.log(huffmanTree);
+
         this.getMapping(huffmanTree,"");
 
         let binaryString = "";
@@ -144,4 +166,4 @@ class HuffmanEncoder{
         return decodedText;
 
     }
-}
+};

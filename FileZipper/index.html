@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Zipper</title>
-    <script src="script.js"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+
+
+    <script src ="BinaryHeap.js" type="module"></script>  
+    
+    <script src ="huffmanEncoder.js" type="module"></script>
+    
+    <script src="script.js" type="module"></script>
+  
 </head>
 
 <nav class = "navbar navbar-light text-center editornav" >
@@ -34,20 +42,14 @@
     </div>
     <div class="button-div">
         
-        <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="inputGroupFile01"
-                aria-describedby="inputGroupFileAddon01">
-              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-            </div>
-          </div>
+      <form class="md-form">
 
-          <div>
-        <button class="btn btn-success" class="ZipButton">Compress</button>
-        <button class="btn btn-danger" class="UnzipButton">Restore</button>
+            <input type="file" id="uploadFile"/>
+
+       
+      </form>
+        <button class="btn btn-success" id="ZipButton">Compress</button>
+        <button class="btn btn-danger" id="UnzipButton">Restore</button>
           </div>
         
     </div>

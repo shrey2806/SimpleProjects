@@ -10,7 +10,7 @@
     
     width: 50%;
     height: 100%;
-    border:1px solid gray;
+    border:0.5px solid gray;
 
 }
 
@@ -26,8 +26,7 @@
     padding:10px;
 
 }
-.input-group{
-    width:400px;
+form{
     margin:10px;
 }
 .button-div{
@@ -41,7 +40,7 @@
 }
 
 button{
-    margin:10px;
+    margin:5px;
 }
 
 #c1, #c2{
@@ -55,12 +54,12 @@ button{
     width:70%;
     height:80%;
     overflow-y: scroll;
-    border: 0.5px solid gray;
+    border: 0.5px dashed gray;
 
 }
 
 #compressionDisplay{
     width:70%;
     height:80%;
-    border: 0.5px solid gray;
+    border: 0.5px dashed gray;
 }
