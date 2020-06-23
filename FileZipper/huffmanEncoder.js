@@ -11,8 +11,6 @@ class HuffmanEncoder{
 
     getMapping(node,path){
 
-        console.log("node is," , node);
-
         if(typeof(node[1]) ===  "string"){
             this.mappings[node[1]] = path;
             return;
@@ -42,12 +40,13 @@ class HuffmanEncoder{
     encodeData(data){
 
         let  m = new Map();
+
         this.heap = new Heap();
         
         // Setting the frequency of the characters in the text;
         for(let i= 0 ; i < data.length; i++ ){
             if(m.has(data[i])){
-                m[data[i]] = m[data[i]] +1;
+                m.set(data[i], m.get(data[i]) + 1);
             }
             else{
                 m.set(data[i],1);
@@ -55,13 +54,13 @@ class HuffmanEncoder{
 
         }
 
-        console.log(m);
+        
         // Add them to a Heap;
-        for(var i in m){
-            
-            this.heap.insert([-m[i],i]);
-        }
 
+        for(const [key,value] of m.entries()){
+             this.heap.insert([-1*m.get(key),key]);
+        }
+        
         // Now create a HuffMan tree out of it;
         while(this.heap.size() > 1){
             
@@ -76,7 +75,7 @@ class HuffmanEncoder{
         
         const huffmanTree =  this.heap.extractMax(); 
         
-        console.log(huffmanTree);
+        
 
         this.getMapping(huffmanTree,"");
 

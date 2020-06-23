@@ -6,26 +6,23 @@ onload = function(){
     const zip  = this.document.getElementById('ZipButton');
     const unzip = this.document.getElementById('UnzipButton');
     const uploadBtn = this.document.getElementById('uploadFile');
-
     
     const encoder = new HuffmanEncoder();
 
-
     uploadBtn.addEventListener('change',()=>{ alert("File uploaded") });
-
-
     
-    zip.onclick = function(){
+    let res;
 
+    zip.onclick = function(){
+        res=null;
         let file = uploadBtn.files[0];
 
-        if(file===undefined){
+        if( file === undefined ){
             alert("NO file uploaded");
             return;
         }
 
         const fileReader = new FileReader();
-        
         fileReader.onload = function(fileLoadedEvent){
             const text = fileLoadedEvent.target.result;
 
@@ -36,7 +33,7 @@ onload = function(){
 
             const result = encoder.encodeData(text);
             const treeStruct = encoder.displayTree(result.huffmanTree);
-
+            res = result;
             downloadFile(file.name.split('.')[0] + '_encoded.txt', result.encodedText);
 
             treeDisplay.innerText = treeStruct;
@@ -48,7 +45,32 @@ onload = function(){
         fileReader.readAsText(file, "UTF-8");
     }
     
-    
+    unzip.onclick = function(){
+
+        let file = uploadBtn.files[0];
+
+        if( file === undefined ){
+            alert("NO file uploaded");
+            return;
+        }
+
+        const fileReader = new FileReader();
+        fileReader.onload = function(fileLoadedEvent){
+            const text = fileLoadedEvent.target.result;
+
+            if(text.length===0){
+                alert("Text Length cannot be zero");
+                return;
+            }
+
+            const result = encoder.decodeData(res);
+
+            downloadFile(file.name.split('.')[0] +'_decoded.txt', result);
+            compressionDisplay.innerHTML = " De-Compression complete and file sent for Download ";
+        }
+
+        fileReader.readAsText(file, "UTF-8");
+    };
 
 
 };
