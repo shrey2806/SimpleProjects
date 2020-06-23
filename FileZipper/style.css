@@ -1,0 +1,41 @@
+#bigContainer{
+
+    width:100vw;
+    height:70vh;
+    display: flex;
+
+}
+
+.smallContainer{
+    
+    width: 50%;
+    height: 100%;
+    border:1px solid gray;
+
+}
+
+.editornav{
+    
+    font-size: 24px; 
+    display:block;
+    font-family: monospace;
+    background-color: black; 
+    text-align: center; 
+    color: white;
+    font-weight: bold;
+    padding:10px;
+
+}
+.input-group{
+    width:400px;
+    margin:10px;
+}
+.button-div{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+}
